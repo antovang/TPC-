@@ -22,7 +22,7 @@ public:
     
     virtual float getPrix() const=0;
     
-    virtual void ajouter(Produit& produit)=0;
+    virtual void ajouter(Produit& produit);
     
     const Client& getClient() const;
     

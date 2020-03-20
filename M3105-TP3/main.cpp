@@ -17,6 +17,8 @@
 #include "Billet.h"
 #include "BilletReduit.h"
 #include "Promotion.h"
+#include "Pack.h"
+#include "Reservation.h"
 
 using namespace std;
 
@@ -25,13 +27,19 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
+    Client unClient("Antonio","Van Grieken");
     Tarif unTarif("Tarif Générale",0.5);
     Trajet unTrajet("Lyon","Paris",467);
-    Billet unBillet(unTrajet,unTarif);
+    Billet unBillet(unClient,unTrajet,unTarif);
     Promotion unePromo("Promo Anniversaire", 0.5);
-    BilletReduit unBilletReduit(unTrajet,unTarif,unePromo);
+    BilletReduit unBilletReduit(unClient,unTrajet,unTarif,unePromo);
+    Reservation uneReservation("BestWestern",5,250.5,unClient);
+    Pack unPack("Pack-Paris",unClient);
     
-    unBilletReduit.afficher();
+    unPack.ajouter(unBilletReduit);
+    unPack.ajouter(uneReservation);
+    
+    unPack.afficher();
     
     return 0;
 }

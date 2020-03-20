@@ -20,18 +20,22 @@
 
 class Pack : public Produit {
 public:
-    Pack(std::string& libelle, Client& client);
+    Pack(const std::string& libelle, Client& client);
     
-    const std::vector<Produit*> getContenu() const;
+    std::vector<const Produit*> getContenu() const;
     
     virtual float getPrix() const override;
     
     void ajouter(Produit& produit) override;
     
+    void afficher(std::ostream& sortie = std::cout) const override;
+    
 private:
     std::string m_libelle;
-    std::vector<Produit*> m_contenu;
+    std::vector<const Produit*> m_contenu;
 };
+
+std::ostream& operator<< (std::ostream& sortie, const Pack& p);
 
 #endif /* PACK_H */
 

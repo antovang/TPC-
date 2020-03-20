@@ -14,6 +14,10 @@
 #include "Produit.h"
 using namespace std;
 
+void Produit::ajouter(Produit& produit){
+    throw "Impossible de rajouter un Produit";
+}
+
 const Client& Produit::getClient() const{
     return this->m_client;
 }

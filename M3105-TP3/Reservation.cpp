@@ -31,6 +31,11 @@ float Reservation::getPrix() const{
 }
 
 void Reservation::afficher(ostream& sortie) const{
-    sortie << "Nombre de Jours : " << getNbJours() << endl;
-    sortie << "Prix Reservation : " << getPrix() << endl;
+    sortie << "Nombre de Jours : " << getNbJours() << endl 
+            << "Prix Reservation : " << getPrix() << endl;
 } 
+
+ostream& operator<< (ostream& sortie, const Reservation& r){
+    r.afficher();
+    return sortie;
+}

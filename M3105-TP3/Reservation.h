@@ -39,5 +39,8 @@ private:
     NombreContraint<int> m_nbJours;
     NombreContraint<float> m_prixJour;
 };
+
+std::ostream& operator<< (std::ostream& sortie, const Reservation& r);
+
 #endif /* RESERVATION_H */
 

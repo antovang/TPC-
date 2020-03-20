@@ -12,24 +12,33 @@
  */
 
 #include "Pack.h"
+using namespace std;
 
-Pack::Pack(std::string& libelle, Client& client):
+Pack::Pack(const string& libelle, Client& client):
     m_libelle(libelle),Produit::Produit(client){}
 
-const std::vector<Produit*> Pack::getContenu() const{
+vector<const Produit*> Pack::getContenu() const{
     return this->m_contenu;
 }
 
 float Pack::getPrix() const{
     float m_prix = 0;
     
-    for(Produit* p : m_contenu){
+    for(const Produit* p : m_contenu){
         m_prix += p->getPrix();
     } 
     return m_prix;
 }
 
 void Pack::ajouter(Produit& produit){
-    getContenu().push_back(produit);
+    getContenu().push_back(&produit);
 }
 
+void Pack::afficher(ostream& sortie) const{
+    sortie << getContenu().size() << endl;
+}
+
+ostream& operator<< (ostream& sortie, const Pack& p){
+    p.afficher();
+    return sortie;
+}
