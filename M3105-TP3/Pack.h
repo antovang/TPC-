@@ -20,9 +20,7 @@
 
 class Pack : public Produit {
 public:
-    Pack(const std::string& libelle, Client& client);
-    
-    std::vector<const Produit*> getContenu() const;
+    Pack(const std::string& libelle, Client& client); 
     
     virtual float getPrix() const override;
     
@@ -32,7 +30,7 @@ public:
     
 private:
     std::string m_libelle;
-    std::vector<const Produit*> m_contenu;
+    std::vector<Produit*> m_contenu;
 };
 
 std::ostream& operator<< (std::ostream& sortie, const Pack& p);

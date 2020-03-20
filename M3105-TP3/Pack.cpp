@@ -17,10 +17,6 @@ using namespace std;
 Pack::Pack(const string& libelle, Client& client):
     m_libelle(libelle),Produit::Produit(client){}
 
-vector<const Produit*> Pack::getContenu() const{
-    return this->m_contenu;
-}
-
 float Pack::getPrix() const{
     float m_prix = 0;
     
@@ -31,11 +27,13 @@ float Pack::getPrix() const{
 }
 
 void Pack::ajouter(Produit& produit){
-    getContenu().push_back(&produit);
+    this->m_contenu.push_back(&produit);
 }
 
 void Pack::afficher(ostream& sortie) const{
-    sortie << getContenu().size() << endl;
+    for(Produit* p : this->m_contenu){
+        sortie << *p << endl << endl;
+    }
 }
 
 ostream& operator<< (ostream& sortie, const Pack& p){
