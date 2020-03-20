@@ -37,6 +37,10 @@ int Trajet::getDistance() const{
     return this->distance.getVal();
 }
 
+void Trajet::setDistance(float dist){
+    this->distance.setVal(dist);
+}
+
 void Trajet::saisir(istream& entree){
     string villeDep;
     string villeArr;

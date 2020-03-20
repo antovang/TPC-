@@ -26,8 +26,12 @@ float BilletReduit::getPrix() const{
 }
 
 void BilletReduit::afficher(ostream& sortie) const{
-    sortie << getTrajet() << getTarif() << getPromotion() << "Total Prix s/Reduction : €" <<
+    sortie  << "Billet : " << endl << getTrajet() << getTarif() << getPromotion() << "Total Prix s/Reduction : €" <<
         Billet::getPrix() << endl << "Total Prix Reduit : €" << getPrix() << endl;
 }
 
+ostream& operator<< (ostream& sortie, const BilletReduit& b){
+    b.afficher();
+    return sortie;
+}
 

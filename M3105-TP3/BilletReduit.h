@@ -32,5 +32,7 @@ private:
     const Promotion& promotion;
 };
 
+std::ostream& operator<< (std::ostream& sortie, const BilletReduit& b);
+
 #endif /* BILLETREDUIT_H */
 

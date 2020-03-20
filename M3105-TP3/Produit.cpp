@@ -22,7 +22,8 @@ const Client& Produit::getClient() const{
     return this->m_client;
 }
 
-void Produit::afficher(ostream& sortie) const{
-    sortie << "Client : " << getClient().getNom() << endl;
+ostream& operator<< (ostream& sortie, const Produit& p){
+    p.afficher();
+    return sortie;
 }
 

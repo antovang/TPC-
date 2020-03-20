@@ -27,6 +27,8 @@ public:
     
     float getPrixAuKm() const;
     
+    void setPrixKilo(float prixKilo);
+    
     void saisir(std::istream& entree = std::cin);
     
     void afficher(std::ostream& sortie = std::cout) const;

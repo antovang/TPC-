@@ -29,12 +29,18 @@ float Tarif::getPrixAuKm() const{
     return prixAuKm.getVal();
 }
 
+void Tarif::setPrixKilo(float prixKilo){
+    this->prixAuKm.setVal(prixKilo);
+}
+
 void Tarif::saisir(istream& entree){
     string libelle;
+    float prix;
     
-    entree >> libelle;
+    entree >> libelle >> prix;
     
-    setLibelle(libelle);   
+    setLibelle(libelle);
+    setPrixKilo(prix);
 }
 
 void Tarif::afficher(ostream& sortie) const{

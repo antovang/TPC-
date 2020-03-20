@@ -26,11 +26,13 @@ public:
     
     const Client& getClient() const;
     
-    virtual void afficher(std::ostream& sortie = std::cout) const;
+    virtual void afficher(std::ostream& sortie = std::cout) const=0;
     
 private:
     Client& m_client;
 };
+
+std::ostream& operator<< (std::ostream& sortie, const Produit& p);
 
 #endif /* PRODUIT_H */
 

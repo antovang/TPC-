@@ -31,9 +31,16 @@ void Pack::ajouter(Produit& produit){
 }
 
 void Pack::afficher(ostream& sortie) const{
+    
+    sortie << "#################################" << endl;
+    
     for(Produit* p : this->m_contenu){
-        sortie << *p << endl << endl;
+        sortie << *p << endl 
+        << "---------------------------------" << endl << endl;
     }
+    
+    sortie << "Prix Total Pack = €" << getPrix() << endl 
+        << "---------------------------------" << endl;
 }
 
 ostream& operator<< (ostream& sortie, const Pack& p){
