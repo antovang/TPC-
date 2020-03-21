@@ -19,14 +19,24 @@ class Client {
 public:
     Client(const std::string& prenom, const std::string& nom);
     
+    void setPrenom(const std::string& prenom);
+    
+    void setNom(const std::string& nom);
+    
     const std::string& getPrenom() const;
     
     const std::string& getNom() const;
+    
+    void saisir (std::istream& entree = std::cin);
+    
+    void afficher(std::ostream& sortie = std::cout) const;
     
 private:
     std::string prenom;
     std::string nom;
 };
+
+std::ostream& operator<< (std::ostream& sortie, const Client& c);
 
 #endif /* CLIENT_H */
 

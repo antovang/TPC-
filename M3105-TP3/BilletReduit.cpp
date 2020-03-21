@@ -14,7 +14,7 @@
 #include "BilletReduit.h"
 #include "Billet.h"
 
-BilletReduit::BilletReduit(Client& client, Trajet& trajet, Tarif& tarif, Promotion& unePromo):
+BilletReduit::BilletReduit(const Client& client, const Trajet& trajet, const Tarif& tarif, const Promotion& unePromo):
 Billet::Billet(client,trajet,tarif),promotion(unePromo){}
 
 const Promotion& BilletReduit::getPromotion() const{
@@ -26,7 +26,8 @@ float BilletReduit::getPrix() const{
 }
 
 void BilletReduit::afficher(ostream& sortie) const{
-    sortie  << "Billet : " << endl << getTrajet() << getTarif() << getPromotion() << "Total Prix s/Reduction : €" <<
+    sortie  << "Client : " << Produit::getClient() << endl << getTrajet() << 
+        getTarif() << getPromotion() << "Total Prix s/Reduction : €" <<
         Billet::getPrix() << endl << "Total Prix Reduit : €" << getPrix() << endl;
 }
 

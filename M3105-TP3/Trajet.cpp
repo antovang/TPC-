@@ -44,11 +44,13 @@ void Trajet::setDistance(float dist){
 void Trajet::saisir(istream& entree){
     string villeDep;
     string villeArr;
+    float distance;
     
-    entree >> villeDep >> villeArr;
+    entree >> villeDep >> villeArr >> distance;
     
     setVilleArrivee(villeArr);
     setVilleDepart(villeDep);
+    setDistance(distance);
 }
 
 void Trajet::afficher(ostream& sortie) const{

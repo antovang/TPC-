@@ -14,14 +14,14 @@
 #include "Billet.h"
 using namespace std;
 
-Billet::Billet(Client& unClient,Trajet& unTrajet, Tarif& unTarif):
+Billet::Billet(const Client& unClient,const Trajet& unTrajet, const Tarif& unTarif):
     Produit::Produit(unClient),trajet(unTrajet),tarif(unTarif){}
 
-Trajet& Billet::getTrajet() const{
+const Trajet& Billet::getTrajet() const{
     return this->trajet;
 }
 
-Tarif& Billet::getTarif() const{
+const Tarif& Billet::getTarif() const{
     return this->tarif;
 }
 
@@ -30,7 +30,7 @@ float Billet::getPrix() const{
 }
 
 void Billet::afficher(ostream& sortie) const{
-    sortie  << "Billet : " << endl <<  getTrajet() << getTarif() << "Prix Total : €" << getPrix() << endl;
+    sortie  << "Client : " << Produit::getClient() << endl <<  getTrajet() << getTarif() << "Prix Total : €" << getPrix() << endl;
 }
 
 ostream& operator<< (ostream& sortie, const Billet& b){

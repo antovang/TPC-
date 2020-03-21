@@ -7,8 +7,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/vangriea/Documents/M3103/M3105-TP3/Client.cpp</file>
-            <file>file:/Users/vangriea/Documents/M3103/M3105-TP3/Client.h</file>
+            <file>file:/Users/vangriea/Documents/M3103/TPC-/M3105-TP3/Billet.cpp</file>
+            <file>file:/Users/vangriea/Documents/M3103/TPC-/M3105-TP3/Conteneur.h</file>
+            <file>file:/Users/vangriea/Documents/M3103/TPC-/M3105-TP3/main.cpp</file>
+            <file>file:/Users/vangriea/Documents/M3103/TPC-/M3105-TP3/Conteneur.cpp</file>
+            <file>file:/Users/vangriea/Documents/M3103/TPC-/M3105-TP3/BilletReduit.cpp</file>
         </group>
     </open-files>
 </project-private>

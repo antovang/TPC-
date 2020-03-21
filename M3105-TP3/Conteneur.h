@@ -14,6 +14,8 @@
 #ifndef CONTENEUR_H
 #define CONTENEUR_H
 #include <vector>
+#include <iostream>
+#include "NombreContraint.h"
 
 template <class T>
 class Conteneur {
@@ -29,6 +31,10 @@ public:
 private:
     std::vector<const T*> m_contenu;
 };
+
+template<class T>
+std::ostream& operator<< (std::ostream& sortie, const Conteneur<T>& c);
+
 
 #include "Conteneur.cpp"
 #endif /* CONTENEUR_H */

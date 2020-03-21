@@ -18,7 +18,7 @@
 
 class Produit {
 public:
-    inline Produit(Client& unClient):m_client(unClient){}
+    Produit(const Client& unClient);
     
     virtual float getPrix() const=0;
     
@@ -29,7 +29,7 @@ public:
     virtual void afficher(std::ostream& sortie = std::cout) const=0;
     
 private:
-    Client& m_client;
+    const Client& m_client;
 };
 
 std::ostream& operator<< (std::ostream& sortie, const Produit& p);

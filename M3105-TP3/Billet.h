@@ -21,19 +21,19 @@
 
 class Billet : public Produit {
 public:
-    Billet(Client& unClient, Trajet& unTrajet, Tarif& unTarif);
+    Billet(const Client& unClient, const Trajet& unTrajet, const Tarif& unTarif);
     
-    Trajet& getTrajet() const;
+    const Trajet& getTrajet() const;
     
-    Tarif& getTarif() const;
+    const Tarif& getTarif() const;
     
     float getPrix() const override;
     
     void afficher(std::ostream& sortie = std::cout) const override;
     
 private:
-    Trajet& trajet;
-    Tarif& tarif;
+    const Trajet& trajet;
+    const Tarif& tarif;
 };
 
 std::ostream& operator<< (std::ostream& sortie, const Billet& b);

@@ -12,9 +12,18 @@
  */
 
 #include "Client.h"
+using namespace std;
 
 Client::Client(const std::string& prenom, const std::string& nom):prenom(prenom),
     nom(nom){};
+    
+void Client::setPrenom(const std::string& prenom){
+    this->prenom = prenom;
+}
+
+void Client::setNom(const std::string& nom){
+    this->nom = nom;
+}
 
 const std::string& Client::getPrenom() const{
     return this->prenom;
@@ -24,3 +33,21 @@ const std::string& Client::getNom() const{
     return this->nom;
 }
 
+void Client::saisir (std::istream& entree){
+    std::string prenom;
+    std::string nom;
+    
+    entree >> prenom >> nom;
+    
+    setPrenom(prenom);
+    setNom(nom);
+}
+
+void Client::afficher(ostream& sortie) const{
+    sortie << "Prenom : " << getPrenom() << endl << "Nom : " << getNom() << endl;
+} 
+
+ostream& operator<< (ostream& sortie, const Client& c){
+    c.afficher();
+    return sortie;
+}

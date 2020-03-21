@@ -27,6 +27,8 @@ public:
     
     void setLibelle(const std::string& libelle);
     
+    void setTaux(float taux);
+    
     float calculPrixReduit(float prix) const;
     
     void saisir(std::istream& entree = std::cin);

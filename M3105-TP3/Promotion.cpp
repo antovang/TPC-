@@ -25,6 +25,10 @@ float Promotion::getTauxReduction() const {
     return this->tauxReduction.getVal() * 100;
 }
 
+void Promotion::setTaux(float taux){
+    this->tauxReduction.setVal(taux);
+}
+
 void Promotion::setLibelle(const string& libelle){
     this->libelle = libelle;
 }
@@ -35,10 +39,12 @@ float Promotion::calculPrixReduit(float prix) const{
 
 void Promotion::saisir(istream& entree){
     string libelle;
+    float taux;
     
-    entree >> libelle;
+    entree >> libelle >> taux;
     
     setLibelle(libelle);
+    setTaux(taux);
 }
 
 void Promotion::afficher(ostream& sortie) const{

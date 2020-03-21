@@ -20,7 +20,7 @@
 class BilletReduit : public Billet{
 public:
     
-    BilletReduit(Client& client,Trajet& trajet, Tarif& tarif, Promotion& unePromo);
+    BilletReduit(const Client& client,const Trajet& trajet, const Tarif& tarif, const Promotion& unePromo);
     
     const Promotion& getPromotion() const;
     

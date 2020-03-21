@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 /* 
  * File:   Conteneur.cpp
  * Author: vangriea
@@ -12,6 +13,7 @@
  */
 
 #ifdef CONTENEUR_H
+using namespace std;
 
 template <class T>
 Conteneur<T>::Conteneur(){}
@@ -22,14 +24,17 @@ void Conteneur<T>::ajouter(const T& element){
 }
 
 template <class T>
-void Conteneur<T>::afficher(std::ostream & sortie) const{
-    for (const T* elem : this->m_contenu) {
-        sortie << " - " << *elem << endl;
+void Conteneur<T>::afficher(ostream & sortie) const{
+    int i = 1;
+    for (const T* elem : this->m_contenu) { 
+        sortie << "----------------------------------" << endl << i << ". " 
+               << *elem << "----------------------------------" << endl;
+        i++;
     }
 }
 
 template <class T>
-const T& Conteneur<T>::choisirElement(std::ostream& sortie, std::istream& entree){
+const T& Conteneur<T>::choisirElement(ostream& sortie, istream& entree){
     NombreContraint<int> n(1,1,m_contenu.size());
     bool ok;
     do {
@@ -46,5 +51,10 @@ const T& Conteneur<T>::choisirElement(std::ostream& sortie, std::istream& entree
     return *this->m_contenu[n.getVal()-1];
 }
 
+template<class T>
+ostream& operator<< (ostream& sortie, const Conteneur<T>& c){
+    c.afficher();
+    return sortie;
+}
 #endif
 
