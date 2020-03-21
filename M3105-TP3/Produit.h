@@ -27,7 +27,6 @@ public:
     const Client& getClient() const;
     
     virtual void afficher(std::ostream& sortie = std::cout) const=0;
-    
 private:
     const Client& m_client;
 };

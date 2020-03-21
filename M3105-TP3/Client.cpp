@@ -33,18 +33,21 @@ const std::string& Client::getNom() const{
     return this->nom;
 }
 
-void Client::saisir (std::istream& entree){
+void Client::saisir (std::ostream& sortie, std::istream& entree){
     std::string prenom;
     std::string nom;
     
-    entree >> prenom >> nom;
+    sortie << "Prenom : " ;
+    entree >> prenom;
+    sortie << " Nom : ";
+    entree >> nom;
     
     setPrenom(prenom);
     setNom(nom);
 }
 
 void Client::afficher(ostream& sortie) const{
-    sortie << "Prenom : " << getPrenom() << endl << "Nom : " << getNom() << endl;
+    sortie << getPrenom() << " " << getNom() << endl;
 } 
 
 ostream& operator<< (ostream& sortie, const Client& c){

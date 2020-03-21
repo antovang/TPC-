@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /* 
  * File:   Conteneur.cpp
  * Author: vangriea
@@ -17,6 +15,13 @@ using namespace std;
 
 template <class T>
 Conteneur<T>::Conteneur(){}
+
+template <class T>
+Conteneur<T>::~Conteneur(){
+    for(const T* elem : this->m_contenu){
+        delete elem;
+    }
+}
 
 template <class T>
 void Conteneur<T>::ajouter(const T& element){
@@ -39,9 +44,9 @@ const T& Conteneur<T>::choisirElement(ostream& sortie, istream& entree){
     bool ok;
     do {
         try {
-            afficher();
+            afficher(sortie);
             sortie << endl << "Votre choix : ";
-            n.saisir(cin);
+            n.saisir(entree);
             ok = true;
             } catch (const char * e) {
             sortie << "Choix entre 1 et " << m_contenu.size() << endl;
@@ -51,7 +56,7 @@ const T& Conteneur<T>::choisirElement(ostream& sortie, istream& entree){
     return *this->m_contenu[n.getVal()-1];
 }
 
-template<class T>
+template <class T>
 ostream& operator<< (ostream& sortie, const Conteneur<T>& c){
     c.afficher();
     return sortie;

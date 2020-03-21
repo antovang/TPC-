@@ -30,7 +30,6 @@ public:
     float getPrix() const override;
     
     void afficher(std::ostream& sortie = std::cout) const override;
-    
 private:
     const Trajet& trajet;
     const Tarif& tarif;

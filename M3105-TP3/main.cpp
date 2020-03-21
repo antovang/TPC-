@@ -79,39 +79,31 @@ void ajoutClient(Conteneur<Client>& conteneur){
 void ajoutBillet(Conteneur<Tarif>& contTarif,Conteneur<Trajet>& contTrajet,
     Conteneur<Client>& contClient,Conteneur<Billet>& contBillet)
 {
-    cout << "Tarifs déjà créés : " << endl;
     const Tarif& tarif= contTarif.choisirElement();
-    
-    cout << "Trajets déjà créés : " << endl;
+
     const Trajet& trajet= contTrajet.choisirElement();
     
-    cout << "Clients déjà créés : " << endl;
     const Client& client= contClient.choisirElement();
     
     Billet* billet = new Billet(client,trajet,tarif);
     
     contBillet.ajouter(*billet);
-    delete billet;
 }
 
 void ajoutBilletReduit(Conteneur<Tarif>& contTarif,Conteneur<Trajet>& contTrajet,
-    Conteneur<Client>& contClient, Conteneur<Promotion>& contPromo, Conteneur<Billet>& contBillet)
+    Conteneur<Client>& contClient, Conteneur<Promotion>& contPromo, Conteneur<BilletReduit>& contBilletReduit)
 {
-    cout << "Tarifs déjà créés : " << endl;
     const Tarif& tarif = contTarif.choisirElement();
-    
-    cout << "Trajets déjà créés : " << endl;
+
     const Trajet& trajet = contTrajet.choisirElement();
-    
-    cout << "Clients déjà créés : " << endl;
+
     const Client& client = contClient.choisirElement();
-    
-    cout << "Promos déjà créées : " << endl;
+
     const Promotion& promo = contPromo.choisirElement();
     
     BilletReduit* billetR = new BilletReduit(client,trajet,tarif,promo);
     
-    contBillet.ajouter(*billetR);
+    contBilletReduit.ajouter(*billetR);
 }
 
 int main(int argc, char** argv) {
@@ -120,6 +112,7 @@ int main(int argc, char** argv) {
     Conteneur<Tarif> conteneurTarif;
     Conteneur<Trajet> conteneurTrajet;
     Conteneur<Billet> conteneurBillet;
+    Conteneur<BilletReduit> conteneurBilletReduit;
     Conteneur<Client> conteneurClient;
     Conteneur<Promotion> conteneurPromotion;
     
@@ -133,7 +126,7 @@ int main(int argc, char** argv) {
     Promotion* promo = new Promotion("PromoEtu",0.5);
         conteneurPromotion.ajouter(*promo);
     
-    bool sortir;
+    bool sortir = false;
     
     cout << "Bienvenue !, Que voulez-vous faire ?" << endl << endl;
     
@@ -146,11 +139,12 @@ int main(int argc, char** argv) {
               << "5. Créer un billet ou un billet réduit en choisissant ses « composants » "
                       "parmi les trajets/tarifs/clients/promotions déjà créés"  << endl 
               << "6. Sortir" << endl
-              << "7. Voir les billets déjà créés " << endl;
+              << "7. Voir les billets disponibles **sans réduction " << endl
+              << "8. Voir les billets réduits disponibles " << endl;  
 
-        NombreContraint<int> choix(1,1,7);
+        NombreContraint<int> choix(6,1,8);
         NombreContraint<int> choixBR(1,1,2);
-
+        
         cout << "Faites votre choix : ";
         choix.saisir();
 
@@ -168,7 +162,6 @@ int main(int argc, char** argv) {
                 ajoutPromotion(conteneurPromotion);
                 break;
             case 4 :
-                cout << "Entrez prenom et puis un nom : ";
                 ajoutClient(conteneurClient);
                 break;
             case 5 :
@@ -178,30 +171,24 @@ int main(int argc, char** argv) {
 
                 choixBR.saisir();
                 if(choixBR.getVal() == 1){
-                    ajoutBilletReduit(conteneurTarif,conteneurTrajet,conteneurClient,conteneurPromotion,conteneurBillet);
+                    ajoutBilletReduit(conteneurTarif,conteneurTrajet,conteneurClient,conteneurPromotion,conteneurBilletReduit);
                     break;
                 }
                 ajoutBillet(conteneurTarif,conteneurTrajet,conteneurClient,conteneurBillet);
                 break;
             case 6 :
-                sortir = false;
+                sortir = true;
                 break;
             case 7 :
                 conteneurBillet.afficher();
                 cout << endl << endl;
                 break;
-            default :
-                cout << "Choix invalide";
+            case 8 :   
+                conteneurBilletReduit.afficher();
+                cout << endl << endl;
                 break;
         }
-    
-    }while(!sortir);
-    
-    
-    delete trajet;
-    delete tarif;
-    delete promo;
-    delete client;
+    }while(sortir == false);
     
     return 0;
 }

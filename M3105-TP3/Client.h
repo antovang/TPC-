@@ -27,7 +27,7 @@ public:
     
     const std::string& getNom() const;
     
-    void saisir (std::istream& entree = std::cin);
+    void saisir(std::ostream& sortie = std::cout, std::istream& entree = std::cin);
     
     void afficher(std::ostream& sortie = std::cout) const;
     

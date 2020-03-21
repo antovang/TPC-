@@ -46,13 +46,13 @@ void NombreContraint<T>::setVal(T val) {
             this->m_val = val;
         }else{
             if(val < getMin())
-                throw "val < min";
+                throw "Votre choix n'existe pas";
             
-        throw "val > max";
+        throw "Votre choix n'existe pas";
         }
     }
     catch (char const * erreur) {
-        cout << "Exception levée : " << erreur << endl ;
+        cout << "Erreur : " << erreur << endl ;
     }  
 }
 

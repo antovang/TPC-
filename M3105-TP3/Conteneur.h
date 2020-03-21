@@ -22,6 +22,8 @@ class Conteneur {
 public:
     Conteneur();
     
+    ~Conteneur();
+    
     void ajouter(const T& element);
     
     void afficher(std::ostream & sortie = std::cout) const;
